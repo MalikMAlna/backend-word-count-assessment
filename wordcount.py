@@ -45,8 +45,6 @@ __author__ = ""
 
 
 # Define print_words(filename) and print_top(filename) functions.
-
-
 def print_words(filename):
     pass
 
