@@ -48,6 +48,7 @@ __author__ = """Collections Suggestion on Slack from Piero
                 https://teamtreehouse.com/community/counting-words-in-a-string-using-a-dictionary-python-collection-challenge
                 https://www.pythonforbeginners.com/files/
                 reading-and-writing-files-in-python"""
+# Assessment took around 1-2 hours to complete
 
 
 # Define print_words(filename) and print_top(filename) functions.
