@@ -54,7 +54,7 @@ def print_words(filename):
         for word in words_data:
             word_dict[word] = words_data.count(word)
         for keys, values in word_dict.items():
-            print(keys + " " + str(values))
+            print(keys + " : " + str(values))
 
 
 def print_top(filename):
@@ -65,7 +65,8 @@ def print_top(filename):
         for word in words_data:
             word_dict[word] = words_data.count(word)
         twenty_most_highest = Counter(word_dict).most_common(20)
-        print(twenty_most_highest)
+        for keys, values in twenty_most_highest:
+            print(keys + " : " + str(values))
 
     # You could write a helper utility function that reads a file
     # and builds and returns a word/count dict for it.
