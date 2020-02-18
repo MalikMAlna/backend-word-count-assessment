@@ -40,17 +40,32 @@ print_words() and print_top().
 """
 
 import sys
+from collections import Counter
 
-__author__ = ""
+__author__ = "Collections Suggestion on Slack from Piero"
 
 
 # Define print_words(filename) and print_top(filename) functions.
 def print_words(filename):
-    pass
+    with open(filename, "r") as file:
+        data = file.read()
+        words_data = data.lower().split()
+        word_dict = {}
+        for word in words_data:
+            word_dict[word] = words_data.count(word)
+        for keys, values in word_dict.items():
+            print(keys + " " + str(values))
 
 
 def print_top(filename):
-    pass
+    with open(filename, "r") as file:
+        data = file.read()
+        words_data = data.lower().split()
+        word_dict = {}
+        for word in words_data:
+            word_dict[word] = words_data.count(word)
+        twenty_most_highest = Counter(word_dict).most_common(20)
+        print(twenty_most_highest)
 
     # You could write a helper utility function that reads a file
     # and builds and returns a word/count dict for it.
