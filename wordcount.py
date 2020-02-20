@@ -40,32 +40,64 @@ print_words() and print_top().
 """
 
 import sys
+from collections import Counter
 
-# +++your code here+++
+__author__ = """Collections Suggestion on Slack from Piero and also help for debug stuff
+                https://stackoverflow.com/questions/6612769/is-there-a-more-elegant-way-for-unpacking-keys-and-values-of-a-dictionary-into-t
+                https://www.geeksforgeeks.org/python-program-to-find-the-highest-3-values-in-a-dictionary/
+                https://teamtreehouse.com/community/counting-words-in-a-string-using-a-dictionary-python-collection-challenge
+                https://www.pythonforbeginners.com/files/
+                reading-and-writing-files-in-python"""
+# Assessment took around 1-2 hours to complete
+
+
+def create_dict(filename):
+    word_dict = {}
+    with open(filename, "r") as f:
+        word_list = f.read().lower().split()
+        for word in word_list:
+            if word in word_dict:
+                word_dict[word] += 1
+            else:
+                word_dict[word] = 1
+    return word_dict
 # Define print_words(filename) and print_top(filename) functions.
-# You could write a helper utility function that reads a file
-# and builds and returns a word/count dict for it.
-# Then print_words() and print_top() can just call the utility function.
 
-###
 
-# This basic command line argument parsing code is provided and
-# calls the print_words() and print_top() functions which you must define.
+def print_words(word_dict):
+    for keys, values in word_dict.items():
+        print(keys + " : " + str(values))
+
+
+def print_top(word_dict):
+    twenty_most_highest = Counter(word_dict).most_common(20)
+    for keys, values in twenty_most_highest:
+        print(keys + " : " + str(values))
+
+    # You could write a helper utility function that reads a file
+    # and builds and returns a word/count dict for it.
+    # Then print_words() and print_top() can just call the utility function.
+
+    ###
+
+    # This basic command line argument parsing code is provided and
+    # calls the print_words() and print_top() functions which you must define.
 
 
 def main():
     if len(sys.argv) != 3:
-        print 'usage: python wordcount.py {--count | --topcount} file'
+        print('usage: python wordcount.py {--count | --topcount} file')
         sys.exit(1)
 
     option = sys.argv[1]
     filename = sys.argv[2]
+    d = create_dict(filename)
     if option == '--count':
-        print_words(filename)
+        print_words(d)
     elif option == '--topcount':
-        print_top(filename)
+        print_top(d)
     else:
-        print 'unknown option: ' + option
+        print('unknown option: ' + option)
         sys.exit(1)
 
 
