@@ -51,28 +51,28 @@ __author__ = """Collections Suggestion on Slack from Piero
 # Assessment took around 1-2 hours to complete
 
 
+def create_dict(filename):
+    word_dict = {}
+    with open(filename, "r") as f:
+        word_list = f.read().lower().split()
+        for word in word_list:
+            if word in word_dict:
+                word_dict[word] += 1
+            else:
+                word_dict[word] = 1
+    return word_dict
 # Define print_words(filename) and print_top(filename) functions.
-def print_words(filename):
-    with open(filename, "r") as file:
-        data = file.read()
-        words_data = data.lower().split()
-        word_dict = {}
-        for word in words_data:
-            word_dict[word] = words_data.count(word)
-        for keys, values in word_dict.items():
-            print(keys + " : " + str(values))
 
 
-def print_top(filename):
-    with open(filename, "r") as file:
-        data = file.read()
-        words_data = data.lower().split()
-        word_dict = {}
-        for word in words_data:
-            word_dict[word] = words_data.count(word)
-        twenty_most_highest = Counter(word_dict).most_common(20)
-        for keys, values in twenty_most_highest:
-            print(keys + " : " + str(values))
+def print_words(word_dict):
+    for keys, values in word_dict.items():
+        print(keys + " : " + str(values))
+
+
+def print_top(word_dict):
+    twenty_most_highest = Counter(word_dict).most_common(20)
+    for keys, values in twenty_most_highest:
+        print(keys + " : " + str(values))
 
     # You could write a helper utility function that reads a file
     # and builds and returns a word/count dict for it.
@@ -91,10 +91,11 @@ def main():
 
     option = sys.argv[1]
     filename = sys.argv[2]
+    d = create_dict(filename)
     if option == '--count':
-        print_words(filename)
+        print_words(d)
     elif option == '--topcount':
-        print_top(filename)
+        print_top(d)
     else:
         print('unknown option: ' + option)
         sys.exit(1)
