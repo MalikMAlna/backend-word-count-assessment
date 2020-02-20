@@ -42,7 +42,7 @@ print_words() and print_top().
 import sys
 from collections import Counter
 
-__author__ = """Collections Suggestion on Slack from Piero
+__author__ = """Collections Suggestion on Slack from Piero and also help for debug stuff
                 https://stackoverflow.com/questions/6612769/is-there-a-more-elegant-way-for-unpacking-keys-and-values-of-a-dictionary-into-t
                 https://www.geeksforgeeks.org/python-program-to-find-the-highest-3-values-in-a-dictionary/
                 https://teamtreehouse.com/community/counting-words-in-a-string-using-a-dictionary-python-collection-challenge
